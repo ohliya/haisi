@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+		
+		html,body{
+				width: 100%;
+				height: 100%;
+				margin: 0;
+				padding: 0;
+				z-index: -10;
+				position: relative;
+			}
+		#ayuwang{
+			/*position: relative;*/
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			min-width: 500px;
+			z-index: -10;
+			/*zoom: 1;*/
+				
+			background-image: url("img/ayuwang/底图.jpg");
+			
+			
+     		-webkit-filter: blur(0px);
+        	filter: blur(0px);
+
+			background-repeat: no-repeat;
+			background-size: contain;
+			background-position: center 0;
+		}
+		#jieshao{
+			position: absolute;
+			margin: 500px 120px;
+			display: block;
+		}
+		#fanhui{
+			position: absolute;
+			margin: 2010px 720px;
+			display: none;
+		}
+		#xiangji{
+			position: absolute;
+			margin: 1900px 380px;
+			display: none;
+		}
+		#jieshu{
+			position: absolute;
+			margin: 2020px 30px;
+			display: none;
+		}
+		#zhaopian{
+			transform: scale(0.6,0.6);
+			position: absolute;
+			margin: 5px 20px;
+			display: none;
+		}
+		#guanbi{
+			position: absolute;
+			margin: 480px 800px;
+			display: none;
+		}
+		#ren{
+			position: absolute;
+			margin: 930px 470px;
+			transform: scale(0.55,0.55);
+			display: none;
+		}
+
+		
+		
+		</style>
+	<script>
+  function e(obj){return document.getElementById(obj)}
+
+    document.onclick=function(){
+      e('jieshao').style.display='none';
+　　　　　　　document.onclick=null;　
+	  e('xiangji').style.display='block';
+	  e('jieshu').style.display='block';
+	  e('fanhui').style.display='block';
+    }
+    e('jieshao').onclick=function(event){
+    //只阻止了向上冒泡，而没有阻止向下捕获，所以点击con的内部对象时，仍然可以执行这个函数
+    	stopBubble(event); 
+	}
+	//阻止冒泡函数
+	function stopBubble(e){  
+    	if(e && e.stopPropagation){
+      		e.stopPropagation();  //w3
+    	}
+    	else{
+      		window.event.cancelBubble=true; //IE
+    	}
+	}
+	function pai() {
+		e('xiangji').style.display='none';
+	  e('jieshu').style.display='none';
+	  e('fanhui').style.display='none';
+	  e('zhaopian').style.display='block';
+	  e('guanbi').style.display='block';
+	  e('ren').style.display='block';
+	  e('ayuwang').style.filter='blur(5px)';
+	  
+	}
+	function guan() {
+	  e('xiangji').style.display='block';
+	  e('jieshu').style.display='block';
+	  e('fanhui').style.display='block';
+	  e('zhaopian').style.display='none';
+	  e('guanbi').style.display='none';
+	  e('ren').style.display='none';
+	  e('ayuwang').style.filter='blur(0px)';
+	}
+	
+	
+</script>
+	</head>
+	<body>
+		<div id="ayuwang"></div>
+			<div id="jieshao">
+				<img src="img/ayuwang/介绍框.png" />	
+			</div>
+			<div id="fanhui">
+				<img src="img/ayuwang/返回.png" />	
+			</div>
+			<div id="xiangji">
+				<img src="img/ayuwang/相机.png"  onclick="pai()"/>	
+			</div>
+			<div id="jieshu">
+				<img src="img/ayuwang/结束.png" />	
+			</div>
+			<div id="zhaopian">
+				<img src="img/ayuwang/底图.jpg" />	
+			</div>
+			<div id="guanbi">
+				<img src="img/ayuwang/关闭.png" onclick="guan()"/>	
+			</div>
+			<div id="ren">
+				<img src="img/ayuwang/人.png" />	
+			</div>
+			
+	</body>
+</html>
